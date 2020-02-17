@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Dimensions, Image } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Image,
+  SafeAreaView,
+} from 'react-native';
 import { useSpring, animated } from 'react-spring/native';
 
 const AnimatedView = animated(View);
@@ -12,7 +18,7 @@ const calc = (x, y) => [
   1.1,
 ];
 const trans = (x, y, s) => [
-  { perspective: 400 },
+  { perspective: 600 },
   { rotateX: `${x}deg` },
   { rotateY: `${y}deg` },
   { scale: s },
@@ -20,6 +26,8 @@ const trans = (x, y, s) => [
 
 const styles = StyleSheet.create({
   cardContainer: {
+    width: '100%',
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#f0f0f0',
@@ -28,7 +36,6 @@ const styles = StyleSheet.create({
   card: {
     width: 300,
     height: 300,
-    backgroundColor: 'red',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -55,19 +62,21 @@ export default function Card3D() {
   };
 
   return (
-    <View style={styles.cardContainer}>
-      <AnimatedView
-        style={[styles.card, { transform: xys.interpolate(trans) }]}
-        accessible
-        onStartShouldSetResponder={() => true}
-        onResponderMove={onResponderMove}
-        onResponderRelease={() => set({ xys: [0, 0, 1] })}
-      >
-        <Image
-          style={{ width: 300, height: 300 }}
-          source={require('@/assets/img/blogger_avatar_copy.png')}
-        />
-      </AnimatedView>
-    </View>
+    <SafeAreaView>
+      <View style={styles.cardContainer}>
+        <AnimatedView
+          style={[styles.card, { transform: xys.interpolate(trans) }]}
+          accessible
+          onStartShouldSetResponder={() => true}
+          onResponderMove={onResponderMove}
+          onResponderRelease={() => set({ xys: [0, 0, 1] })}
+        >
+          <Image
+            style={{ width: 300, height: 300 }}
+            source={require('@/assets/img/natural.jpg')}
+          />
+        </AnimatedView>
+      </View>
+    </SafeAreaView>
   );
 }

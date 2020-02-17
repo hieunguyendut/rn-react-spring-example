@@ -44,6 +44,8 @@ module.exports = {
     "react/static-property-placement": ["error", "property assignment", {
       defaultProps: "static public field",
       propTypes: "static public field"
-    }]
+    }],
+    'react/prop-types': 0,
+    'react/no-array-index-key': 0
   },
 };

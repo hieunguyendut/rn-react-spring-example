@@ -56,6 +56,9 @@
     "react-test-renderer": "16.9.0",
     "redux-devtools-extension": "^2.13.8"
   },
+  "resolutions": {
+    "@react-native-community/cli-platform-android": "2.9.0"
+  },
   "jest": {
     "preset": "react-native"
   }
